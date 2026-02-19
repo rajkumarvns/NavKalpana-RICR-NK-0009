@@ -1,0 +1,27 @@
+body {
+    border: 5px solid red;
+}
+  
+
+/* *{
+    background-color: blue;
+
+} */
+
+.BuyCar {
+    min-height: 100vh;
+    /* width: 600px; */
+    /* height: 800px; */
+    background-color: orange !important;
+}
+
+/* .BuyCar  #X2333{
+   font-size: 60px;
+   color: violet;
+} */
+
+
+.test123 {
+    border: 5px solid rgb(0, 26, 255);
+  }
+  

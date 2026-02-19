@@ -1,0 +1,42 @@
+.u_nav{
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.u_nav .logo_home {
+  color: white;
+  /* padding-bottom: 10px; */
+}
+
+.u_nav .menu text {
+  font-weight: 900;
+  /* padding-top: 50px; */
+}
+
+
+
+.u_nav .logo_home img{
+    width: 140px;
+    height: auto;
+} 
+
+.u_nav-icons a {
+    font-weight: 900;
+    font-size: 90px;
+  }
+
+  
+  .u_nav-icon {
+    color: rgb(182, 182, 182);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .u_nav-icon:hover {
+    transform: scale(1.1);
+  }

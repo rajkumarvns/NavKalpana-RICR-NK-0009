@@ -1,0 +1,109 @@
+.readme{
+    height: auto;
+}
+
+.block_1 {
+}
+
+.content{
+    padding: 40px 300px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.info h1{
+    display: flex;
+    justify-content: center;
+}
+
+.info h4{
+    font-size: 23px;
+    font-family: serif;
+    font-weight: 200;
+    text-align: justify;
+}
+
+.info .btn{
+    padding: 1rem 0;
+}
+
+
+.info .lmore-btn-1 button{
+    padding: 1rem 0;
+}
+
+.info .lmore-btn-1 button{
+    padding: 1rem 2.5rem;
+    font-size: 17px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .info .lmore-btn-1 button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    transition: all 0.4s ease-in-out;
+    z-index: -1;
+  }
+
+  .info .lmore-btn-1 button:hover{
+    color: white;
+    transform: translateY(-2px);
+    background-color: #BF0D3E;
+    box-shadow: 0 8px 20px rgba(200, 16, 46, 0.4);
+  }
+
+
+
+
+
+  .info .lmore-btn-0 {
+    padding: 1rem 0;
+  }
+  
+
+  .info .lmore-btn-0 button{
+    padding: 1rem 2.5rem;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
+  }
+
+
+  .info .lmore-btn-0 button:hover{
+    transform: translateY(-2px);
+    background-color: #000000;
+    color: white;
+    box-shadow: 0 8px 20px rgba(134, 134, 134, 0.4);
+  }
+
+
+.info .h{
+    justify-content: start;
+}

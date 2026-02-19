@@ -1,0 +1,10 @@
+.vid{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}

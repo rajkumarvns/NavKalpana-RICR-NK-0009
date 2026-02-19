@@ -1,0 +1,86 @@
+/* src/styles/Navbar.css */
+.navbar {
+  background-color: #BF0D3E; /* Pantone 193 C */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 3rem;
+}
+
+.bg-white {
+  background-color: rgb(255, 255, 255);
+  padding: 2rem 5rem;
+  justify-content: flex-start;
+  gap: 100px;
+  font-family: 'Ubuntu',monospace;
+}
+
+
+.navbar .logo img{
+  width: 140px;
+  height: auto;
+}
+
+.navbar .logo_dfly img {
+  width: 220px;
+  height: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links_dfly {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.nav-links a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links_dfly a{
+  color: rgb(44, 44, 44);
+  size: 16px;
+  font-weight: 900;
+}
+
+.nav-icons a {
+  font-weight: 900;
+}
+
+.nav-icons .nav-icon {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-icons_dfly{
+  position: absolute;
+  right: 0;
+  padding-right: 40px;
+  width: fit-content;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-icons_dfly .nav-icon {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+
