@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* Navbar Fix */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-top: 15px;
+    border-radius: 50px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; color: #4f46e5; text-decoration: none; }
+.logo span { color: #3b82f6; }
+
+.nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; }
+.nav-links a { text-decoration: none; color: #475569; font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: #4f46e5; }
+
+.auth-btns { display: flex; align-items: center; gap: 1.5rem; }
+.btn-login { text-decoration: none; color: #475569; font-weight: 600; }
+.btn-reg { 
+    background: #4f46e5; color: white; padding: 10px 22px; 
+    border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s;
+}
+.btn-reg:hover { background: #4338ca; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2); }
+
+/* Hero Section Fix */
+.hero {
+    text-align: center;
+    padding: 80px 10%;
+    background: linear-gradient(to bottom, #f5f7ff, #ffffff);
+}
+
+.hero h1 { font-size: 3.5rem; color: #0f172a; margin-bottom: 1rem; line-height: 1.2; }
+.hero p { font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto 2rem; }
+
+.hero-img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 30px;
+    margin-top: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* Hero Image Professional Look */
+.relative img {
+    transition: transform 0.5s ease-in-out;
+}
+
+.relative:hover img {
+    transform: translateY(-10px); /* Halki si floating feel */
+}
+
+/* Page Animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Soft Background Glow */
+body {
+    background-image: radial-gradient(circle at 50% 0%, #e0e7ff 0%, #f8fafc 40%);
+    background-attachment: fixed;
+}
+

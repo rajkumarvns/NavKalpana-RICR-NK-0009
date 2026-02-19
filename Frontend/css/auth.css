@@ -1,0 +1,88 @@
+:root {
+    --primary: #4f46e5;
+    --bg: #EEF2FF;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Padding di hai taaki mobile par bhi thoda gap rahe */
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+.auth-container {
+    background: white;
+    /* Padding thodi kam kar di hai taaki box chota lage */
+    padding: 1.8rem 2.2rem; 
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    width: 100%;
+    /* Max-width ko 380px kar diya hai compact look ke liye */
+    max-width: 380px; 
+    transition: 0.3s ease;
+}
+
+h2 { 
+    color: #1e293b; 
+    text-align: center; 
+    margin-bottom: 1.2rem; 
+    font-size: 1.5rem; /* Font size chota kiya hai */
+    font-weight: 700;
+}
+
+.form-group { 
+    margin-bottom: 0.8rem; /* Gap kam kiya hai */
+}
+
+input {
+    width: 100%;
+    /* Input height thodi choti ki hai professional look ke liye */
+    padding: 10px 14px; 
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    background: #fcfdfe;
+}
+
+input:focus { 
+    outline: none; 
+    border-color: var(--primary); 
+    background: white;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); 
+}
+
+button {
+    width: 100%;
+    padding: 11px; /* Button chota aur sleek */
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #4338ca;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+p { 
+    text-align: center; 
+    font-size: 0.85rem; 
+    color: #64748b; 
+    margin-top: 1.2rem; 
+}
+
+a { color: var(--primary); text-decoration: none; font-weight: 600; }
