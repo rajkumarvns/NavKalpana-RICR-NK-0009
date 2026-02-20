@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     rank: { type: Number, default: 0 }, // For ACIE leaderboard [cite: 153, 160]
     masteryScore: { type: Number, default: 0 }
+    
 });
 
 module.exports = mongoose.model('User', UserSchema);
