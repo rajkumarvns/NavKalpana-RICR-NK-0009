@@ -1,18 +1,18 @@
-<footer class="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-500 bg-white pt-10 border-t border-slate-100">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
+<footer class="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-white bg-blue-950 pt-10 border-t border-slate-100">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 max-w-7xl mx-auto">
+        
         <div class="sm:col-span-2 lg:col-span-1">
-            <a href="#" class="flex items-center gap-2 mb-6">
-                
-                <span class="text-2xl font-bold text-slate-900">ACIE <span class="text-indigo-600">Engine</span></span>
-            </a>
+            <div class="flex items-center gap-2 mb-6">
+                <span class="text-2xl font-bold text-white">ACIE <span class="text-indigo-600">Engine</span></span>
+            </div>
             <p class="text-sm/7 mt-4">
-                The AI Career Intelligence Engine (ACIE) is an adaptive platform connecting skill development with interview performance Build your career path with AI-driven insights
+                The AI Career Intelligence Engine (ACIE) is an adaptive platform connecting skill development with interview performanc. Build your career path with AI-driven insights.
             </p>
         </div>
 
         <div class="flex flex-col lg:items-center">
             <div class="flex flex-col text-sm space-y-2.5">
-                <h2 class="font-semibold mb-5 text-gray-800">Resources</h2>
+                <h2 class="font-bold mb-5 text-white">Resources</h2>
                 <a class="hover:text-indigo-600 transition" href="#">Adaptive Learning</a>
                 <a class="hover:text-indigo-600 transition" href="#">Resume Intelligence</a>
                 <a class="hover:text-indigo-600 transition" href="#">Interview Prep</a>
@@ -21,9 +21,9 @@
         </div>
 
         <div>
-            <h2 class="font-semibold text-gray-800 mb-5">Master Your Career</h2>
+            <h2 class="font-bold text-white mb-5">Master Your Career</h2>
             <div class="text-sm space-y-6 max-w-sm">
-                <p>Get personalized study plans and AI-powered assignment alerts directly in your inbox.</p>
+                <p>Get personalized study plans and AI-powered assignment alerts directly in your inbox</p>
                 <div class="flex items-center justify-center gap-2 p-2 rounded-md bg-indigo-50">
                     <input class="focus:ring-2 bg-white ring-indigo-600 outline-none w-full max-w-64 py-2 rounded px-2" type="email" placeholder="Your college email">
                     <button class="bg-indigo-600 px-4 py-2 text-white rounded font-medium hover:bg-indigo-700 transition">Join</button>
@@ -33,6 +33,16 @@
     </div>
 
     <div class="py-6 text-center border-t mt-10 border-slate-100">
-        <p>Copyright 2026 © <span class="font-semibold text-indigo-600">NavKalpana Hackathon</span> | Powered by RICR</p>
+        <p>Copyright 2026 © <span class="font-semibold text-indigo-600">NavKalpana Hackathon</span> | Conducted by NIIST Powered by RICR</p>
     </div>
 </footer>
+
+<script>
+    function logout() {
+        // Bhai, token aur storage saaf karke login par bhej dena [cite: 163]
+        localStorage.clear();
+        window.location.href = "/login";
+    }
+</script>
+
+
