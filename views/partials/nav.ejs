@@ -1,0 +1,77 @@
+<nav class="bg-black border-b border-slate-100 sticky top-0 z-50 px-6 py-4 shadow-sm">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-[1fr_auto_1fr] items-center">
+        
+        <div class="flex justify-start items-center">
+            <a href="/dashboard" class="text-xl font-bold text-white tracking-tight whitespace-nowrap">
+                ACIE <span class="text-indigo-600">Engine</span>
+            </a>
+        </div>
+
+        <div class="hidden lg:flex justify-center items-center gap-10">
+            <a href="/quizzes" class="text-sm font-semibold text-white hover:text-indigo-600 transition">Adaptive Quizzes</a>
+            <a href="/assignments" class="text-sm font-semibold text-white hover:text-indigo-600 transition">Assignments</a>
+            <a href="/roadmap" class="text-sm font-semibold text-white hover:text-indigo-600 transition">My Roadmap</a>
+            <a href="/analysis" class="text-sm font-semibold text-white hover:text-indigo-600 transition">AI Analysis</a>
+        </div>
+
+        <div class="flex justify-end items-center gap-3 lg:gap-5">
+            <div class="bg-indigo-50 px-3 lg:px-4 py-1.5 rounded-full border border-indigo-100 flex items-center">
+                <span class="text-[9px] lg:text-[10px] font-bold text-indigo-400 mr-1 lg:mr-2 uppercase">Rank</span>
+                <span class="text-xs lg:text-sm font-bold text-indigo-600">#<%= typeof user !== 'undefined' ? user.rank : '--' %></span>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-4 border-l pl-5 border-slate-200">
+                <span class="text-sm font-semibold text-white"><%= typeof user !== 'undefined' ? user.name : 'User' %></span>
+                <button onclick="logout()" class="bg-red-50 text-red-500 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-red-100 transition">Logout</button>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none">
+                <span id="bar1" class="w-6 h-0.5 bg-slate-600 transition-all duration-300 transform origin-center"></span>
+                <span id="bar2" class="w-6 h-0.5 bg-slate-600 transition-all duration-300"></span>
+                <span id="bar3" class="w-6 h-0.5 bg-slate-600 transition-all duration-300 transform origin-center"></span>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden mt-4 p-4 bg-slate-50 rounded-2xl border border-slate-100 shadow-inner space-y-1">
+        <a href="/quizzes" class="block text-sm font-semibold text-white px-4 py-3 rounded-xl hover:bg-white hover:text-indigo-600 transition">Adaptive Quizzes</a>
+        <a href="/assignments" class="block text-sm font-semibold text-white px-4 py-3 rounded-xl hover:bg-white hover:text-indigo-600 transition">Assignments</a>
+        <a href="/roadmap" class="block text-sm font-semibold text-white px-4 py-3 rounded-xl hover:bg-white hover:text-indigo-600 transition">My Roadmap</a>
+        <a href="/analysis" class="block text-sm font-semibold text-white px-4 py-3 rounded-xl hover:bg-white hover:text-indigo-600 transition border-b border-slate-200 pb-4">AI Analysis</a>
+        
+        <div class="flex items-center justify-between px-4 pt-4">
+            <span class="text-sm font-bold text-white"><%= typeof user !== 'undefined' ? user.name : 'User' %></span>
+            <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+
+        menu.classList.toggle('hidden');
+
+        if (!menu.classList.contains('hidden')) {
+            // Hamburger to X animation
+            bar1.style.transform = "translateY(8px) rotate(45deg)";
+            bar2.style.opacity = "0";
+            bar3.style.transform = "translateY(-8px) rotate(-45deg)";
+        } else {
+            // X to Hamburger animation
+            bar1.style.transform = "none";
+            bar2.style.opacity = "1";
+            bar3.style.transform = "none";
+        }
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = "/";
+    }
+</script>
+
+

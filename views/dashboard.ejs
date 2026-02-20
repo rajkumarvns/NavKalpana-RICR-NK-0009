@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body class="bg-transparent min-h-screen">
+
+    <%- include('partials/nav') %>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <header class="mb-10">
+            <h1 class="text-3xl font-bold text-slate-800">
+                Welcome back, <span id="welcomeName" class="text-indigo-600">Student</span>! 👋
+            </h1>
+            <p class="text-slate-500 mt-2 text-sm uppercase tracking-wide font-medium">
+                AI Career Intelligence Engine | Preparation Hub
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 transition-hover hover:shadow-md">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Resume Strength</h3>
+                <p class="text-4xl font-black text-indigo-600">
+                    <span id="resScore">0</span><span class="text-lg text-slate-300">/100</span>
+                </p>
+                <p class="text-[10px] text-slate-400 mt-2 italic">*Based on Skill Relevance & Project Depth</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 transition-hover hover:shadow-md">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Overall Mastery</h3>
+                <p class="text-4xl font-black text-emerald-500">
+                    <span id="mastScore">0</span><span class="text-lg text-slate-300">%</span>
+                </p>
+                <p class="text-[10px] text-slate-400 mt-2 italic">*Updated dynamically after assessments</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 transition-hover hover:shadow-md">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Current Rank</h3>
+                <p class="text-4xl font-black text-amber-500">
+                    #<span id="displayRank">--</span>
+                </p>
+                <p class="text-[10px] text-slate-400 mt-2 italic">*Quantifying your career readiness</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm min-h-[300px] flex flex-col justify-center items-center text-center">
+                <div class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                    <span class="text-2xl">🚀</span>
+                </div>
+                <h4 class="font-bold text-slate-800">Upcoming Adaptive Quiz</h4>
+                <p class="text-slate-500 text-sm mt-2 max-w-xs">Analyze your resume to unlock personalized prep quizzes.</p>
+                <a href="/analysis" class="mt-6 bg-indigo-600 text-white px-6 py-2 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition">Get Analyzed</a>
+            </div>
+
+            <div class="bg-indigo-900 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h4 class="font-bold text-xl">AI Career Roadmap</h4>
+                    <p class="text-indigo-200 text-sm mt-2">Dynamic path optimized for your target role.</p>
+                    <div class="mt-8 border-l-2 border-indigo-500/30 pl-6 space-y-6">
+                        <div class="relative"><span class="absolute -left-[31px] top-1 w-2.5 h-2.5 bg-indigo-400 rounded-full"></span><p class="text-sm font-medium">Complete Resume Intelligence</p></div>
+                        <div class="relative opacity-40"><span class="absolute -left-[31px] top-1 w-2.5 h-2.5 bg-slate-500 rounded-full"></span><p class="text-sm">Unlock Skill-Based Assignments</p></div>
+                    </div>
+                </div>
+                <div class="absolute right-[-20px] bottom-[-20px] text-9xl opacity-10">🗺️</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const token = localStorage.getItem('token');
+
+            if (!token || !user) {
+                window.location.href = "/login";
+                return;
+            }
+
+            // Injecting Data into EJS UI
+            document.getElementById('welcomeName').innerText = user.name;
+            document.getElementById('resScore').innerText = user.resumeScore || 0;
+            document.getElementById('mastScore').innerText = user.masteryScore || 0;
+            document.getElementById('displayRank').innerText = user.rank || '--';
+
+            // Navbar elements update (Agar Nav.ejs mein class/id hain)
+            const navName = document.querySelector('.user-name');
+            const navRank = document.querySelector('.rank-value');
+            if (navName) navName.innerText = user.name;
+            if (navRank) navRank.innerText = `#${user.rank || '--'}`;
+        });
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
