@@ -36,7 +36,11 @@ exports.login = async (req, res) => {
         if (!user) return res.status(400).json({ message: "User not found" });
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ message: "Invalid Credentials" });
+        // exports.login update
+        if (!isMatch) {
+            // Option 1: Page redirect (Professional look)
+            return res.status(401).json({ message: "Invalid", redirect: "/error" });
+        }
 
         // JWT Token generation 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || 'secretkey', { expiresIn: '1h' });
