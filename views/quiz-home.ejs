@@ -1,0 +1,109 @@
+<%- include('partials/head') %>
+
+    <body class="bg-black text-white">
+
+        <div class="max-w-4xl mx-auto py-20">
+
+            <h2 class="text-3xl font-bold mb-6">AI Diagnostic Quiz</h2>
+
+            <div class="space-y-4">
+                <input id="topic" placeholder="Enter topic"
+                    class="w-full p-3 bg-black border border-white/20 rounded-lg">
+
+                <select id="difficulty" class="w-full p-3 bg-black border border-white/20 rounded-lg">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <button onclick="generateQuiz()" class="bg-indigo-600 px-6 py-3 rounded-lg">
+                    Generate Quiz
+                </button>
+            </div>
+
+            <div id="quizContainer" class="mt-10"></div>
+
+            <div id="resultContainer" class="mt-10"></div>
+
+        </div>
+
+        <script>
+            async function generateQuiz() {
+                const topic = document.getElementById('topic').value;
+                const difficulty = document.getElementById('difficulty').value;
+
+                const res = await fetch('/api/quiz/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic, difficulty })
+                });
+
+                const data = await res.json();
+
+                if (!data.success) return alert("Error");
+
+                renderQuiz(data.questions, topic, difficulty);
+            }
+
+            function renderQuiz(questions, topic, difficulty) {
+                const container = document.getElementById('quizContainer');
+                container.innerHTML = '';
+
+                questions.forEach((q, index) => {
+                    let html = `<div class="mb-6">
+            <h3>${q.question}</h3>`;
+
+                    q.options.forEach(opt => {
+                        html += `
+            <label>
+            <input type="radio" name="q${index}" value="${opt}">
+            ${opt}
+            </label><br>`;
+                    });
+
+                    html += `</div>`;
+                    container.innerHTML += html;
+                });
+
+                container.innerHTML += `
+    <button onclick='submitQuiz(${JSON.stringify(questions)}, "${topic}", "${difficulty}")'
+    class="bg-purple-600 px-6 py-3 rounded-lg">
+    Submit Quiz
+    </button>`;
+            }
+
+            async function submitQuiz(questions, topic, difficulty) {
+
+                let answers = [];
+                let correctAnswers = [];
+
+                questions.forEach((q, index) => {
+                    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                    answers.push(selected ? selected.value : null);
+                    correctAnswers.push(q.answer);
+                });
+
+                const res = await fetch('/api/quiz/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        topic,
+                        difficulty,
+                        answers,
+                        correctAnswers,
+                        userId: localStorage.getItem('userId')
+                    })
+                });
+
+                const data = await res.json();
+
+                document.getElementById('resultContainer').innerHTML = `
+        <h2 class="text-2xl font-bold">Score: ${data.score}/${data.total}</h2>
+        <div class="mt-6 p-6 bg-white/5 rounded-lg">
+            <h3 class="font-bold mb-2">AI Study Plan:</h3>
+            <p>${data.suggestions}</p>
+        </div>
+    `;
+            }
+        </script>
+    </body>

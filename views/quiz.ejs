@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz</title>
+</head>
+
+<body>
+    <h2>Topic: <%= topic %>
+    </h2>
+
+    <form action="/submit" method="POST">
+        <% questions.forEach((q, index)=> { %>
+            <div>
+                <h3>
+                    <%= q.question %>
+                </h3>
+
+                <% q.options.forEach(option=> { %>
+                    <label>
+                        <input type="radio" name="answers[<%= index %>]" value="<%= option %>" required>
+                        <%= option %>
+                    </label><br>
+                    <% }) %>
+
+                        <input type="hidden" name="correctAnswers[]" value="<%= q.answer %>">
+            </div>
+            <hr>
+            <% }) %>
+
+                <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
