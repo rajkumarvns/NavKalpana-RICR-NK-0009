@@ -66,26 +66,53 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const user = JSON.parse(localStorage.getItem('user'));
             const token = localStorage.getItem('token');
 
+            // 1. Authentication Check
             if (!token || !user) {
                 window.location.href = "/login";
                 return;
             }
 
-            // Injecting Data into EJS UI
+            // Basic Info from LocalStorage
             document.getElementById('welcomeName').innerText = user.name;
-            document.getElementById('resScore').innerText = user.resumeScore || 0;
-            document.getElementById('mastScore').innerText = user.masteryScore || 0;
-            document.getElementById('displayRank').innerText = user.rank || '--';
 
-            // Navbar elements update (Agar Nav.ejs mein class/id hain)
-            const navName = document.querySelector('.user-name');
-            const navRank = document.querySelector('.rank-value');
-            if (navName) navName.innerText = user.name;
-            if (navRank) navRank.innerText = `#${user.rank || '--'}`;
+            // 2. Fetch Fresh AI Data from Database
+            try {
+                const res = await fetch('/api/ai/report-data', {
+                    method: 'GET',
+                    headers: { 
+                        'Authorization': `Bearer ${token}` 
+                    }
+                });
+
+                const result = await res.json();
+
+                if (result.success && result.data) {
+                    const analysis = result.data;
+
+                    // Update UI with Real AI Metrics
+                    // Resume Strength Score
+                    document.getElementById('resScore').innerText = analysis.finalStrengthScore || 0;
+                    
+                    // Rank (Using Score as Rank for now)
+                    document.getElementById('displayRank').innerText = analysis.finalStrengthScore || '--';
+
+                    // Mastery Score (Calculate or use skill relevance)
+                    document.getElementById('mastScore').innerText = analysis.metrics.skillRelevance || 0;
+
+                    // Navbar elements update
+                    const navRank = document.querySelector('.rank-value');
+                    if (navRank) navRank.innerText = `#${analysis.finalStrengthScore || '--'}`;
+                }
+            } catch (err) {
+                console.error("Dashboard Sync Error:", err);
+                // Fallback to local storage if API fails
+                document.getElementById('resScore').innerText = user.resumeScore || 0;
+                document.getElementById('displayRank').innerText = user.rank || '--';
+            }
         });
 
         function logout() {
@@ -93,5 +120,7 @@
             window.location.href = "/";
         }
     </script>
+
+    <%- include('partials/footer') %>
 </body>
 </html>
